@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ac36bead2bc254dad9e8adf63bab24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerMainEventOnAwake: 1
+  TriggerMainEventOnAwake: 0
   MainEvent:
     m_PersistentCalls:
       m_Calls:

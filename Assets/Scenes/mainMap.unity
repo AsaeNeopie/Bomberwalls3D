@@ -3659,6 +3659,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 814643600702184923, guid: f75c5ea3d32713949b202f87b85c6cee,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 814643600702184923, guid: f75c5ea3d32713949b202f87b85c6cee,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 814643600702184923, guid: f75c5ea3d32713949b202f87b85c6cee,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 814643600702184923, guid: f75c5ea3d32713949b202f87b85c6cee,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.3018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 814643600702184923, guid: f75c5ea3d32713949b202f87b85c6cee,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.39642334
+      objectReference: {fileID: 0}
     - target: {fileID: 2871006700453461722, guid: f75c5ea3d32713949b202f87b85c6cee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4970,6 +4995,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1714871244}
+  - {fileID: 2139703463}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1302534662
@@ -4985,6 +5011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombPool: {fileID: 1714871245}
+  explosionVfxsPool: {fileID: 2139703464}
 --- !u!1001 &1303246184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9091,6 +9118,52 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.009540908, y: 0.009540908, z: 0.009428912}
   m_Center: {x: -0.00003143424, y: -0.000046821555, z: -0.000035784207}
+--- !u!1 &2139703462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2139703463}
+  - component: {fileID: 2139703464}
+  m_Layer: 0
+  m_Name: ExplosionVfxsPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2139703463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139703462}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1302534661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2139703464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139703462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c95b865e9b31b2459018503c37202b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 6478484408660732290, guid: b448117f4a5d5eb438fa5ed0f4a3b529, type: 3}
+  _poolSize: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -36,6 +36,20 @@ namespace SimpleVFXs
             }
         }
 
+        void OnPulledFromPool()
+        {
+            //prevents the vfx from always playing on awake
+            if (TryGetComponent<VisualEffect>(out VisualEffect vfx))
+            {
+                vfx.Stop();
+            }
+
+            //plays the whole event on awake
+            if (TriggerMainEventOnAwake)
+            {
+                TriggerMainEvent();
+            }
+        }
 
         public void TriggerMainEvent()
         {

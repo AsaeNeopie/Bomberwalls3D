@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SimpleVFXs;
 
 public class TickingBomb : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class TickingBomb : MonoBehaviour
     /// </summary>
     public void Explode()
     {
+        PoolManager.Instance.explosionVfxsPool.PullObjectFromPool(transform.position);
         //Détection des objets dans ke rayon de l'explosion
         Collider[] hits = Physics.OverlapSphere(transform.position, _radius,_layerMask);
         

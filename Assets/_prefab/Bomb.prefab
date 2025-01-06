@@ -165,6 +165,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 8
+  _effect: {fileID: 0}
 --- !u!1 &6626340439823285119
 GameObject:
   m_ObjectHideFlags: 0
