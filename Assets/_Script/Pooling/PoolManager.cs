@@ -30,11 +30,7 @@ public class PoolManager : MonoBehaviour
         instance = this;
     }
 
-    [SerializeField] List<Pool> _pools = new List<Pool>();
+    public Pool bombPool;
 
-    public Pool SelectPool(Pools selectedPool)
-    {
-        return _pools[(int)selectedPool];
-    }
 
 }
