@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            Instantiate(_bomb, this.transform.gameObject);
+            Instantiate(_bomb);
         }
     }
 
