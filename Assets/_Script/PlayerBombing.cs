@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 public class PlayerBombing : MonoBehaviour
 {
     GameObject _bomb;
-    public int BombCount = 0;
+    public int BombCount = 1;
     public void OnFire(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Instantiate(_bomb);
+            TryToDropBomb();
         }
     }
     public void TryToDropBomb()

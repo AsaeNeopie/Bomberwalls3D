@@ -26,6 +26,7 @@ public class TickingBomb : MonoBehaviour
     {
         //Détection des objets dans ke rayon de l'explosion
         Collider[] hits = Physics.OverlapSphere(transform.position, _radius,_layerMask);
+        
         foreach (Collider c in hits)
         {
             if (c.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable))
@@ -44,4 +45,11 @@ public class TickingBomb : MonoBehaviour
         yield return new WaitForSeconds(_timeToExplode);
         Explode();
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, _radius);
+    }
+
+
 }
