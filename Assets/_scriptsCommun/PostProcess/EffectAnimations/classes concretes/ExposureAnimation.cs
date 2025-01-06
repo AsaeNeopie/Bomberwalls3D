@@ -20,9 +20,9 @@ public class ExposureAnimation : PostProcessEffectAnimation<ColorAdjustments>
 
     protected override void ApplyEffect(ColorAdjustments component, float alpha)
     {
-        alpha = AlphaCurve01.Evaluate(alpha);
+
         float v = Mathf.Lerp(AnimStartValue, startValue, alpha);//startValue;//
-        component.postExposure.value = Mathf.Lerp(v, v + offset, alpha);
+        component.postExposure.value = Mathf.Lerp(v, v + offset, AlphaCurve01.Evaluate(alpha));
     }
 
     protected override void OnBeforePlay()
