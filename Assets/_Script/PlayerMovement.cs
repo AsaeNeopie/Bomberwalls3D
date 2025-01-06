@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Vector2 _moveInputVector;
     [SerializeField] float _movementSpeed;
-    [SerializeField] GameObject _bomb;
     public void OnMove(InputAction.CallbackContext context)
     {
         _moveInputVector = context.ReadValue<Vector2>();
