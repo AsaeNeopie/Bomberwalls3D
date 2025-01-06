@@ -245,14 +245,14 @@ VisualEffect:
       m_Array:
       - m_Value: 0.5
         m_Name: RadiusScale
-        m_Overridden: 0
-      - m_Value: 1
+        m_Overridden: 1
+      - m_Value: 0.6
         m_Name: InitialVelocityScale
-        m_Overridden: 0
-      - m_Value: 0.2
-        m_Name: ParticleCountScale
-        m_Overridden: 0
+        m_Overridden: 1
       - m_Value: 0.5
+        m_Name: ParticleCountScale
+        m_Overridden: 1
+      - m_Value: 0.4
         m_Name: Sparkle Lifetime scale
         m_Overridden: 1
     m_Vector2f:
@@ -280,7 +280,7 @@ VisualEffect:
       m_Array:
       - m_Value: 0
         m_Name: projectiles
-        m_Overridden: 0
+        m_Overridden: 1
       - m_Value: 0
         m_Name: GroundDecal
         m_Overridden: 0
@@ -289,10 +289,10 @@ VisualEffect:
         m_Overridden: 0
       - m_Value: 0
         m_Name: Mushroom shaped
-        m_Overridden: 0
+        m_Overridden: 1
       - m_Value: 1
         m_Name: ColorCorrect
-        m_Overridden: 0
+        m_Overridden: 1
 --- !u!73398921 &5152779112252364929
 VFXRenderer:
   serializedVersion: 1
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ac36bead2bc254dad9e8adf63bab24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerMainEventOnAwake: 0
+  TriggerMainEventOnAwake: 1
   MainEvent:
     m_PersistentCalls:
       m_Calls:

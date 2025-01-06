@@ -12,7 +12,6 @@ namespace SimpleVFXs
 {
 
 
-    [ExecuteAlways]
     public class StylisedEffect : MonoBehaviour
     {
         [SerializeField] bool TriggerMainEventOnAwake = true;

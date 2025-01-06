@@ -9,7 +9,6 @@ using UnityEngine.VFX;
 namespace SimpleVFXs
 {
 
-    [ExecuteAlways]
     public class LightningBeam : MonoBehaviour
     {
 

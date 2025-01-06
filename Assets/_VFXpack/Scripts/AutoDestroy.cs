@@ -10,10 +10,21 @@ namespace SimpleVFXs
         [Min(0)]
         [SerializeField] float Delay = 1;
 
+        PooledObject _pooledObject;
+        void OnInstantiatedByPool()
+        {
+            TryGetComponent<PooledObject>(out  _pooledObject);
+        }
+
+        void OnPulledFromPool()
+        {
+            _pooledObject.GoBackIntoPool_Delayed(Delay);
+        }
+
         // Start is called before the first frame update
         void Start()
         {
-            Destroy(gameObject, Delay);
+            if(_pooledObject==null) Destroy(gameObject, Delay);
         }
 
 
