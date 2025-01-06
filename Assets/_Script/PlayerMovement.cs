@@ -14,13 +14,6 @@ public class PlayerMovement : MonoBehaviour
         _moveInputVector = context.ReadValue<Vector2>();
     }
 
-    public void OnFire(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            Instantiate(_bomb);
-        }
-    }
 
     void Move()
     {
