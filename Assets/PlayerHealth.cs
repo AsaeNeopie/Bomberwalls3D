@@ -1,0 +1,42 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.VFX;
+
+public class PlayerHealth : MonoBehaviour, IDamageable
+{
+    int _health;
+    [Min(1)][SerializeField] int _MaxHealth;
+
+    public event Action<int> OnHealthChanged;
+    public event Action OnGameOver;
+
+    private void Awake()
+    {
+        _health = _MaxHealth;
+    }
+
+    public void OnDamageTaken()
+    {
+        //feedbacks
+        PostProcessController.instance.ChromaticAberrationFlash.play();
+        TimeManager.instance.PlayTimeDilatationAnimation();
+        if (PoolManager.Instance.VfxHitPool!=null) PoolManager.Instance.VfxHitPool.PullObjectFromPool(transform.position);
+
+        //notifier
+        OnHealthChanged?.Invoke(_health);
+
+        //Gameover
+        _health--;
+        if(_health==0 ) GameOver();
+    }
+
+    void GameOver()
+    {
+        OnGameOver?.Invoke();
+
+        if (PoolManager.Instance.VFXDeathPool != null) PoolManager.Instance.VFXDeathPool.PullObjectFromPool(transform.position);
+        Destroy(gameObject);
+    }
+}

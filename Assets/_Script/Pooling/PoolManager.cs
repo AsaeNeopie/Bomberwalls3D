@@ -30,7 +30,7 @@ public class PoolManager : MonoBehaviour
         instance = this;
     }
 
-    public Pool bombPool, explosionVfxsPool;
+    public Pool bombPool, VfxExplosionPool, VfxHitPool, VFXDeathPool;
 
 
 }

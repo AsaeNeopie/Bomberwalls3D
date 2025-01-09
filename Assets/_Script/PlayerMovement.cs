@@ -6,19 +6,32 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Vector2 _moveInputVector;
+    [Header("References")]
+    [SerializeField] CharacterController _characterController;
+    
+    [Header("Values")]
     [SerializeField] float _movementSpeed;
+    [SerializeField] float _acceleration = 50;
+
+    Vector2 _moveInputVector;
+    Vector3 vel;
+
     public void OnMove(InputAction.CallbackContext context)
     {
         _moveInputVector = context.ReadValue<Vector2>();
     }
 
 
+
+
     void Move()
     {
-        Vector3 movement = new Vector3(_moveInputVector.x, 0f, _moveInputVector.y);
+        Vector3 targetVelocity = new Vector3(_moveInputVector.x, 0f, _moveInputVector.y) * _movementSpeed;
 
-        transform.Translate(movement * _movementSpeed * Time.deltaTime, Space.World);
+        vel=Vector3.MoveTowards(vel, targetVelocity, _acceleration*Time.deltaTime);
+
+        _characterController.Move(vel*Time.deltaTime);
+        
     }
     
     private void FixedUpdate()

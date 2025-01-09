@@ -21,6 +21,7 @@ public class PostProcessController : MonoBehaviour
     public ScreenDistortionAnimation E_ScreenDistortion = new();
     public FadingEffect FadeIn = new();
     public FadingEffect FadeOut = new();
+    public ChromaticAberrationAnimation ChromaticAberrationFlash = new();
 
     //singleton
     public static PostProcessController instance { get;private set; }
@@ -39,9 +40,7 @@ public class PostProcessController : MonoBehaviour
         E_ScreenDistortion.SetUp(mVolumeProfile);
         FadeIn.SetUp(mVolumeProfile);
         FadeOut.SetUp(mVolumeProfile);
-
-        //FadeIn.play(true);
-
+        ChromaticAberrationFlash.SetUp(mVolumeProfile);
     }
 
     private void OnDestroy()
@@ -50,6 +49,7 @@ public class PostProcessController : MonoBehaviour
         E_ScreenDistortion.OnDestroy();
         FadeIn.OnDestroy();
         FadeOut.OnDestroy();
+        ChromaticAberrationFlash.OnDestroy();
     }
     
 

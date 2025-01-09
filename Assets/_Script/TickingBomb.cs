@@ -25,7 +25,7 @@ public class TickingBomb : MonoBehaviour
     /// </summary>
     public void Explode()
     {
-        PoolManager.Instance.explosionVfxsPool.PullObjectFromPool(transform.position);
+        PoolManager.Instance.VfxExplosionPool.PullObjectFromPool(transform.position);
         //Détection des objets dans ke rayon de l'explosion
         Collider[] hits = Physics.OverlapSphere(transform.position, _radius,_layerMask);
         

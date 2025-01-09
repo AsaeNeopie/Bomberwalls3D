@@ -20,7 +20,7 @@ namespace SimpleVFXs
 
 
 
-        private void Awake()
+        private void Start()
         {
             //prevents the vfx from always playing on awake
             if (TryGetComponent<VisualEffect>(out VisualEffect vfx))

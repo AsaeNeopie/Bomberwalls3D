@@ -18,7 +18,7 @@ public class PlayerBombing : MonoBehaviour
     {
         if (BombCount > 0) 
         {
-            PoolManager.Instance.bombPool.PullObjectFromPool(transform.position);       
+            PoolManager.Instance.bombPool.PullObjectFromPool(transform.position.round());       
         }
     }
 }

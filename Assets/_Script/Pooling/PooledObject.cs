@@ -39,5 +39,4 @@ public class PooledObject : MonoBehaviour
         if (!IsInPool) Pool.PutObjectBackInPool(this);
     }
 
-
 }

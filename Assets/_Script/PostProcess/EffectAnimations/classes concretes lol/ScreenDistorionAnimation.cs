@@ -26,11 +26,13 @@ public class ScreenDistortionAnimation : PostProcessEffectAnimation<LensDistorti
 
     protected override void OnBeforePlay()
     {
+        if(_component != null)
         AnimStartValue = _component.intensity.value;
     }
 
     protected override void OnSetUp()
     {
+        if (_component != null)
         startValue = _component.intensity.value;
     }
 
