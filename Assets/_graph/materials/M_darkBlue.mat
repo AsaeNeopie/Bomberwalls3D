@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_white
+  m_Name: M_darkBlue
   m_Shader: {fileID: -6465566751694194690, guid: 74c743019d9a48149bd03b5ec38ed3a4,
     type: 3}
   m_Parent: {fileID: 2100000, guid: d0e8db6cba28e774389561c15374a967, type: 2}
@@ -26,12 +26,12 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _FresnelIntensity: 1.2
-    - _fresnelPower: 7.1
+    - _FresnelIntensity: 0
+    - _fresnelPower: 0
     - _smoothness: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.5622641, g: 0.5622641, b: 0.5622641, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7059262279456716675

@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerBombing : MonoBehaviour
 {
     GameObject _bomb;
-    public int BombCount = 1;
+    public int BombCount = 0;
     public void OnFire(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -18,6 +18,7 @@ public class PlayerBombing : MonoBehaviour
     {
         if (BombCount > 0) 
         {
+            BombCount--;
             PoolManager.Instance.bombPool.PullObjectFromPool(transform.position.round());       
         }
     }
