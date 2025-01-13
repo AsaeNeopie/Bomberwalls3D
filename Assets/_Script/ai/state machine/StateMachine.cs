@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Assertions.Must;
 
 /// <summary>
@@ -19,8 +20,8 @@ public class StateMachine : MonoBehaviour
     public State_Win S_Win;
 
     //references
-    //public AiSensor Sensor;
-    //public AiController Controller;
+    public AISensor Sensor;
+    public AiController Controller;
 
 
     private void Awake()

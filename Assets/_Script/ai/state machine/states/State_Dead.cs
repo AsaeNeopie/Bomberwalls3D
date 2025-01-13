@@ -11,7 +11,8 @@ public class State_Dead : StateBase
 
     public override void OnEntered()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        Debug.Log(machine.gameObject.name += " died");
     }
 
     public override void OnExited()

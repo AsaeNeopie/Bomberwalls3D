@@ -11,6 +11,9 @@ public abstract class StateBase
     public abstract void OnExited();
     public abstract void Update();
 
+    //"confort" :
+    protected Transform transform => machine.transform;
+
     public StateBase(StateMachine sm)
     {
         machine = sm;

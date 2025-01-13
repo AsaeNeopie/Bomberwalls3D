@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,16 @@ using UnityEngine.InputSystem;
 public class PlayerBombing : MonoBehaviour
 {
     GameObject _bomb;
-    public int BombCount = 0;
+    public int BombCount { get; private set; } = 0 ;
+
+    public event Action OnBombPickedUp;
+
+    public void PickUpNewBomb()
+    {
+        BombCount++;
+        OnBombPickedUp?.Invoke();
+    }
+
     public void OnFire(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -14,6 +24,7 @@ public class PlayerBombing : MonoBehaviour
             TryToDropBomb();
         }
     }
+
     public void TryToDropBomb()
     {
         if (BombCount > 0) 

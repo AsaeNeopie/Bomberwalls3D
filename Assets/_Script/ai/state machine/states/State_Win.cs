@@ -10,8 +10,7 @@ public class State_Win : StateBase
 
     public override void OnEntered()
     {
-        Time.timeScale = 0;
-        Debug.Log("l'IA a gagné");
+        Debug.Log(machine.gameObject.name += " won");
     }
 
     public override void OnExited()
