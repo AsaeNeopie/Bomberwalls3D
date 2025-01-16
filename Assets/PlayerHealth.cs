@@ -12,17 +12,22 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public event Action<int> OnHealthChanged;
     public event Action OnGameOver;
 
+    PlayerMovement _mvt;
+
     private void Awake()
     {
         _health = _MaxHealth;
+        TryGetComponent(out _mvt);
     }
 
-    public void OnDamageTaken()
+    public void OnDamageTaken(Vector3 Source)
     {
         //feedbacks
         PostProcessController.instance.ChromaticAberrationFlash.play();
         TimeManager.instance.PlayTimeDilatationAnimation();
         if (PoolManager.Instance.VfxHitPool!=null) PoolManager.Instance.VfxHitPool.PullObjectFromPool(transform.position);
+
+        _mvt.AddForce((transform.position-Source).normalized * 5);
 
         //notifier
         OnHealthChanged?.Invoke(_health);

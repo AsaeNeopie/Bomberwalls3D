@@ -49,12 +49,14 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < menuPlayerManager.PlayerCount; i++)
         {
             print(i);
-            GameObject.Instantiate(_playerPrefab, _spawnSockets[i].position, quaternion.identity).GetComponent<PlayerReference>().OnDead+= OnPlayerDied;
+            AlivePlayers.Add(GameObject.Instantiate(_playerPrefab, _spawnSockets[i].position, quaternion.identity).GetComponent<PlayerReference>());
+            AlivePlayers[i].OnDead += OnPlayerDied;
         }
 
         if (menuPlayerManager.BotCount>0) for (int i = 0; i < menuPlayerManager.BotCount; i++)
         {
             GameObject.Instantiate(_botPrefab, _spawnSockets[i + menuPlayerManager.PlayerCount].position,quaternion.identity);
+            AlivePlayers[i].OnDead += OnPlayerDied;
         }
     }
 

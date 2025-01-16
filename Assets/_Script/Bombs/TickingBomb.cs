@@ -34,7 +34,7 @@ public class TickingBomb : MonoBehaviour
             if (c.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
                 //@TODO Raycast
-                damageable.OnDamageTaken();
+                damageable.OnDamageTaken(transform.position);
             }
         }
 

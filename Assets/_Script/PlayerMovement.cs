@@ -14,24 +14,29 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float _acceleration = 50;
 
     Vector2 _moveInputVector;
-    Vector3 vel;
+    public Vector3 Velocity { get; private set; }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         _moveInputVector = context.ReadValue<Vector2>();
     }
 
-
-
+    /// <summary>
+    /// velocity += force
+    /// </summary>
+    /// <param name="Force"></param>
+    public void AddForce(Vector3 Force)
+    {
+        Velocity += Force;
+    }
 
     void Move()
     {
         Vector3 targetVelocity = new Vector3(_moveInputVector.x, 0f, _moveInputVector.y) * _movementSpeed;
 
-        vel=Vector3.MoveTowards(vel, targetVelocity, _acceleration*Time.deltaTime);
+        Velocity=Vector3.MoveTowards(Velocity, targetVelocity, _acceleration*Time.deltaTime);
 
-        _characterController.Move(vel*Time.deltaTime);
-        
+        _characterController.Move(Velocity*Time.deltaTime);
     }
     
     private void FixedUpdate()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyableBloc : MonoBehaviour, IDamageable
 {
-    public void OnDamageTaken()
+    public void OnDamageTaken(Vector3 Source)
     {
         Destroy(gameObject);
     }

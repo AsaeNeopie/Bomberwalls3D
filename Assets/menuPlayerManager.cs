@@ -13,14 +13,14 @@ public class menuPlayerManager : MonoBehaviour
     {
         BotCount += offset;
         BotCount = Mathf.Max(BotCount, 0);
-        _botCountText.text = "Bot Count : " + BotCount.ToString();
+        _botCountText.text = "Number of bots : " + BotCount.ToString();
     }
 
     public void AddPlayer(int offset)
     {
         PlayerCount += offset;
         PlayerCount = Mathf.Max(PlayerCount, 0);
-        _playerCountText.text = "Player Count : " + PlayerCount.ToString();
+        _playerCountText.text = "Number of players : " + PlayerCount.ToString();
     }
 
     public void LaunchGame()

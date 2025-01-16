@@ -18,7 +18,7 @@ public class BombPickup : MonoBehaviour
         if (other.TryGetComponent<PlayerBombing>(out PlayerBombing player))
         {
             player.PickUpNewBomb();
-            _asPooledObject.GoBackIntoPool();
+            if (_asPooledObject != null) _asPooledObject.GoBackIntoPool(); else Destroy(gameObject);
         }
     }
 }
