@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using TMPro;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
@@ -11,7 +12,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
-
+    [SerializeField] private TMP_Text _textBeginnig; 
     //player management
     [HideInInspector] public List<PlayerMenu> PlayerMenuList;
     public static int SpawnPlayerCount;
@@ -49,7 +50,20 @@ public class GameManager : MonoBehaviour
         Debug.LogWarning(SpawnPlayerCount);
     }
 
-    
+    public IEnumerator TimerBeginning(int seconds)
+    {
+        _textBeginnig.text = seconds.ToString();
+        yield return new WaitForSeconds(1);
+        seconds--;
+        _textBeginnig.text = seconds.ToString();
+        yield return new WaitForSeconds(1);
+        seconds--;
+        _textBeginnig.text = seconds.ToString();
+        yield return new WaitForSeconds(1);
+        _textBeginnig.text = "Go !";
+        yield return new WaitForSeconds(1);
+        _textBeginnig.text = "";
+    }
 
-
+    public void StartCo() { StartCoroutine(TimerBeginning(3)); }
 }
