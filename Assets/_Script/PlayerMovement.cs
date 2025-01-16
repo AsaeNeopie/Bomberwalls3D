@@ -8,9 +8,10 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] CharacterController _characterController;
-    
+
     [Header("Values")]
     [SerializeField] float _movementSpeed;
+    public float MoveSpeed => _movementSpeed;
     [SerializeField] float _acceleration = 50;
 
     Vector2 _moveInputVector;

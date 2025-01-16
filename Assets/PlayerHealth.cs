@@ -26,15 +26,22 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         PostProcessController.instance.ChromaticAberrationFlash.play();
         TimeManager.instance.PlayTimeDilatationAnimation();
         if (PoolManager.Instance.VfxHitPool!=null) PoolManager.Instance.VfxHitPool.PullObjectFromPool(transform.position);
+        
+        Source.y = transform.position.y;
+        _mvt.AddForce((transform.position-Source).normalized * 14);
 
-        _mvt.AddForce((transform.position-Source).normalized * 5);
+        _health--;
 
         //notifier
         OnHealthChanged?.Invoke(_health);
-
+        
         //Gameover
-        _health--;
-        if(_health==0 ) GameOver();
+        if (_health==0 ) GameOver();
+    }
+
+    void Update()
+    {
+        print(_health);
     }
 
     void GameOver()

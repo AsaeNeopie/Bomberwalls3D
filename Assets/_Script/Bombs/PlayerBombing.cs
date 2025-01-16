@@ -30,7 +30,7 @@ public class PlayerBombing : MonoBehaviour
         if (BombCount > 0) 
         {
             BombCount--;
-            PoolManager.Instance.bombPool.PullObjectFromPool(transform.position.round());       
+            PoolManager.Instance.bombPool.PullObjectFromPool(transform.position.round()-Vector3.up * 0.5f);       
         }
     }
 }
