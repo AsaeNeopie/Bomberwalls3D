@@ -11,7 +11,6 @@ public class State_FleeingBomb : StateBase
     public State_FleeingBomb(StateMachine sm) : base(sm)
     {
     }
-    
 
     void FindAndGoToNewSafeTile()
     {
