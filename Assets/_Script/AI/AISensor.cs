@@ -23,6 +23,7 @@ public class AISensor : MonoBehaviour
     //notifiers
     public event Action OnNearestPlayerChanged;
     public event Action OnNearestBombPickUpChanged;
+    public event Action OnNewTickingBombDetectedNearby;
     public event Action OnNewDangerousBombDetected;
     public event Action OnNewBombPickUpDetected;
     public event Action OnBombPickedUp;
