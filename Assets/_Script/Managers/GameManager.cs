@@ -49,21 +49,4 @@ public class GameManager : MonoBehaviour
         SpawnPlayerCount = c;
         Debug.LogWarning(SpawnPlayerCount);
     }
-
-    public IEnumerator TimerBeginning(int seconds)
-    {
-        _textBeginnig.text = seconds.ToString();
-        yield return new WaitForSeconds(1);
-        seconds--;
-        _textBeginnig.text = seconds.ToString();
-        yield return new WaitForSeconds(1);
-        seconds--;
-        _textBeginnig.text = seconds.ToString();
-        yield return new WaitForSeconds(1);
-        _textBeginnig.text = "Go !";
-        yield return new WaitForSeconds(1);
-        _textBeginnig.text = "";
-    }
-
-    public void StartCo() { StartCoroutine(TimerBeginning(3)); }
 }
