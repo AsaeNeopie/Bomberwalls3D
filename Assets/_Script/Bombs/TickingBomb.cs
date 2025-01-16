@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SimpleVFXs;
+using UnityEditor.Rendering;
 
 public class TickingBomb : MonoBehaviour
 {
@@ -33,8 +34,12 @@ public class TickingBomb : MonoBehaviour
         {
             if (c.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
+                Vector3 offset = c.transform.position-transform.position;
+                if(Physics.Raycast(transform.position,offset,out RaycastHit hit,offset.magnitude) && hit.collider == c)
+                {
+                    damageable.OnDamageTaken(transform.position);
+                }
                 //@TODO Raycast
-                damageable.OnDamageTaken(transform.position);
             }
         }
 

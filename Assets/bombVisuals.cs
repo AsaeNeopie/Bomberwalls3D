@@ -6,6 +6,7 @@ public class bombVisuals : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] MeshRenderer _renderer;
+    [SerializeField] Collider _collider;
 
     [Header("Values")]
     [SerializeField] float _frequencyIncreaseRate = 1;
@@ -18,6 +19,15 @@ public class bombVisuals : MonoBehaviour
     {
         _block = new();
         _startTime = Time.time;
+        _collider.isTrigger = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _collider.isTrigger = false;
+        }
     }
 
     // Update is called once per frame

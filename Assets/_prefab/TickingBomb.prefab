@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7504600291776723250}
   - component: {fileID: 2746972165262718222}
   - component: {fileID: 1418380872417615821}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 8448516242996486481}
   - component: {fileID: 8420768869947255162}
   - component: {fileID: 3444525602820012106}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TickingBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 1418380872417615821}
+  _collider: {fileID: 7887356539326550327}
   _frequencyIncreaseRate: 1.5
   _baseFrequency: 0.5
   _redIntensity: 100
@@ -338,6 +339,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: vfx_Item_legendary
       objectReference: {fileID: 0}
+    - target: {fileID: 2436660179564029381, guid: 5689ff2ac2651c54baf51829bb3a87ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4242467957679125109, guid: 5689ff2ac2651c54baf51829bb3a87ab,
         type: 3}
       propertyPath: m_PropertySheet.m_Bool.m_Array.Array.size
@@ -372,6 +378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
       value: 0.045688815
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272076906795034139, guid: 5689ff2ac2651c54baf51829bb3a87ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
