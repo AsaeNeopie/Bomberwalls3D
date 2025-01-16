@@ -12,11 +12,18 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _textBeginnig; 
-    //player management
-    [HideInInspector] public List<PlayerMenu> PlayerMenuList;
-    public static int SpawnPlayerCount;
+
+    [Header("asset references")]
+    [SerializeField] GameObject _playerPrefab;
+    [SerializeField] GameObject _botPrefab;
+
+    [Header("scene references")]
+    [SerializeField] List<Transform> _spawnSockets;
+
+    [HideInInspector] public List<PlayerReference> AlivePlayers;
     
+
+
     //singleton
     private static GameManager instance;
     public static GameManager Instance
@@ -26,27 +33,39 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
     private void Awake()
     {
+        if (instance != null) Destroy(this);
         instance = this;
-        if(SceneManager.GetActiveScene().buildIndex == 0 ) SpawnPlayerCount = 0;
     }
 
-    public void RegisterPlayerInMenu(PlayerMenu Player)
+    private void Start()
     {
-        PlayerMenuList.Add(Player);
+        SpawnPlayers();
     }
 
-
-    public void UpdateSpawnPlayerCount()
+    void SpawnPlayers()
     {
-        int c = 0;
-        foreach (PlayerMenu p in PlayerMenuList)
+        for (int i = 0; i < menuPlayerManager.PlayerCount; i++)
         {
-            if (p.isReady) { c++; }
+            print(i);
+            GameObject.Instantiate(_playerPrefab, _spawnSockets[i].position, quaternion.identity).GetComponent<PlayerReference>().OnDead+= OnPlayerDied;
         }
-        SpawnPlayerCount = c;
-        Debug.LogWarning(SpawnPlayerCount);
+
+        if (menuPlayerManager.BotCount>0) for (int i = 0; i < menuPlayerManager.BotCount; i++)
+        {
+            GameObject.Instantiate(_botPrefab, _spawnSockets[i + menuPlayerManager.PlayerCount].position,quaternion.identity);
+        }
     }
+
+    void OnPlayerDied(PlayerReference player)
+    {
+        AlivePlayers.Remove(player);
+        if(AlivePlayers.Count == 1)
+        {
+            TimeManager.instance.StopTime(.5f);
+        }
+    }
+
+
 }
