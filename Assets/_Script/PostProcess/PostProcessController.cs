@@ -41,6 +41,8 @@ public class PostProcessController : MonoBehaviour
         FadeIn.SetUp(mVolumeProfile);
         FadeOut.SetUp(mVolumeProfile);
         ChromaticAberrationFlash.SetUp(mVolumeProfile);
+
+        FadeIn.play();
     }
 
     private void OnDestroy()

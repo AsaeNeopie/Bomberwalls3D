@@ -39,11 +39,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (_health==0 ) GameOver();
     }
 
-    void Update()
-    {
-        print(_health);
-    }
-
     void GameOver()
     {
         OnGameOver?.Invoke();
