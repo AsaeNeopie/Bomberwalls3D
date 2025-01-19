@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-using static LevelManager;
+using static MapDataEditor;
 
 [CustomEditor(typeof(LevelManager))]
 public class LevelManager_CustomInspector : Editor

@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 [CustomEditor(typeof(MapData))]
 public class MapDataEditor : Editor
@@ -11,9 +17,10 @@ public class MapDataEditor : Editor
         base.OnInspectorGUI();
         if (GUILayout.Button("Edit map"))
         {
-            //LevelCustomisationWindow window = EditorWindow.GetWindow<LevelCustomisationWindow>();
-           // window.LevelManager = Target;
-            //window.Show();
+
+            MapEditorWindow window = EditorWindow.GetWindow<MapEditorWindow>();
+            window.Map = (MapData)target;
+            window.Show();
         }
     }
 }

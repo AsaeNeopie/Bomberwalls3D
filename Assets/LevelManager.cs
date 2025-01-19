@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public enum Tile {SolidBlock,BrickBlock,BombPickup,PlayerSpawn};
+public enum Tile {SolidBlock,BrickBlock,BombPickup,PlayerSpawn,Air};
 public class LevelManager : MonoBehaviour
 {
 
