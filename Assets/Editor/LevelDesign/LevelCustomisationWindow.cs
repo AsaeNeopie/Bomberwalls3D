@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static PlasticGui.WorkspaceWindow.Merge.MergeInProgress;
 
 
 // Place the selected object randomly between the interval of the Min Max Slider
@@ -13,91 +12,84 @@ using static PlasticGui.WorkspaceWindow.Merge.MergeInProgress;
 
 class LevelCustomisationWindow : EditorWindow
 {
-    MapInfo Info = new();
-    public SerializedProperty property;
 
-    //inputs
-    Vector2 _lastMousePosition;
-    bool _mouseButtonDown;
+    public LevelManager LevelManager;
+    Rect r;
 
-    Rect r = new();
-
-    void HandleEvents()
-    {
-        switch (Event.current.type)
-        {
-            case EventType.MouseDrag:
-                _lastMousePosition = Event.current.mousePosition;
-                Event.current.Use();
-                break;
-
-            case EventType.MouseDown:
-                _lastMousePosition = Event.current.mousePosition;
-                _mouseButtonDown = true;
-                Event.current.Use();
-                break;
-
-            case EventType.MouseUp:
-                _lastMousePosition = Event.current.mousePosition;
-                _mouseButtonDown = false;
-                Event.current.Use();
-                break;
-            case EventType.Repaint:
-                r = EditorGUILayout.GetControlRect();
-                Event.current.Use();
-                break;
-        }
-    }
+    
 
     void OnGUI()
     {
-        HandleEvents();
 
-        //background
-        EditorGUI.DrawRect(r, new Color(.8f, 1, 1, .5f));
-        //handle
-        if (_mouseButtonDown)
+        //compute white rect
+        float minSize;
+        float TileSize;
+        if (position.size.x < position.size.y) 
         {
-            Info.BombCount = PixelLengthToBlockCount((int)(_lastMousePosition.x - r.position.x), r);
+            float ratio =  (float)LevelManager.Bounds.height / (float)LevelManager.Bounds.width;
+            minSize = r.width = (float)position.size.x *.75f;
+            r.height = r.width * ratio;
+
+            TileSize = (float)minSize /(float)LevelManager.Bounds.width;
         }
-        Debug.Log("-");
+        else
+        {
+            float ratio =  (float)LevelManager.Bounds.width / (float)LevelManager.Bounds.height;
+            minSize = r.height = (float)position.size.y * .75f;
+            r.width = r.height * ratio;
+
+            TileSize = (float)minSize / (float)LevelManager.Bounds.height;
+
+        }
+        r.center = position.size/2f;
         Debug.Log(r);
-        Debug.Log(Event.current);
-        Rect Handle = new Rect(new Vector2(BlockCountToPixelLength(Info.BombCount, r), r.position.y), new Vector2(5, r.height));
-        EditorGUI.DrawRect(Handle, Color.white);
+        EditorGUI.DrawRect(r,Color.white);
+
+        //draw Tiles
+        for (int i = 0; i < LevelManager.Bounds.width; i++)
+        {
+            for (int j = 0; j < LevelManager.Bounds.height; j++)
+            {
+                
+                Vector2Int key = new Vector2Int(i, j);
+                if (LevelManager.Tiles.ContainsKey(key))
+                {
+                    Color c = Color.white;
+                    switch (LevelManager.Tiles[new Vector2Int(i, j)])
+                    {
+                        case Tile.SolidBlock:
+                            c = Color.black; break;
+                        case Tile.BrickBlock:
+                            c = Color.grey; break;
+                        case Tile.PlayerSpawn:
+                            c = Color.cyan; break;
+                        case Tile.BombPickup:
+                            c = Color.magenta; break;
+                    }
+
+                    EditorGUI.DrawRect(new Rect(r.position.x + i * TileSize + 1, r.position.y + j * TileSize + 1, TileSize - 2, TileSize - 2), c);
+                }
+                
+                
+                
+            }
+        }
+
         
     }
 
-    int PixelLengthToBlockCount(int p,Rect r)
+
+    private void OnEnable()
     {
-        return (int)((float)p/ (float)r.width * Info.freeSpaces);
+        name = "Map Customization";
+        titleContent = new( name);
+        
     }
 
-    int BlockCountToPixelLength(int b, Rect r)
-    {
-        return (int)((float)b/ Info.freeSpaces * (float)r.width);
-    }
-
-    public void Init()
-    {
-        Info = new();
-        Info.Start_Inclusive = property.FindPropertyRelative("Start_Inclusive").vector2IntValue;
-        Info.End_Exclusive = property.FindPropertyRelative("End_Exclusive").vector2IntValue;
-        Info.BombCount = property.FindPropertyRelative("BombCount").intValue;
-        Info.BricksCount = property.FindPropertyRelative("BricksCount").intValue;
-        Info.SolidWallsPercentage = property.FindPropertyRelative("SolidWallsPercentage").floatValue;
-        Debug.Log(Info.BombCount);
-
-    }
 
     private void OnDisable()
     {
-        property.FindPropertyRelative("Start_Inclusive").vector2IntValue = Info.Start_Inclusive;
-        property.FindPropertyRelative("End_Exclusive").vector2IntValue = Info.End_Exclusive;
-        property.FindPropertyRelative("BombCount").intValue = Info.BombCount;
-        property.FindPropertyRelative("BricksCount").intValue = Info.BricksCount;
-        property.FindPropertyRelative("SolidWallsPercentage").floatValue = Info.SolidWallsPercentage;
-        property.serializedObject.ApplyModifiedProperties();
+        
     }
 
 

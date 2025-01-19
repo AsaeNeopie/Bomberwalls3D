@@ -27,20 +27,12 @@ public class LevelManager_CustomInspector : Editor
         EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1), Color.gray);
         GUILayout.Space(5);
 
+        
 
+        
 
         if (GUILayout.Button("Rebuild Map"))
             Target.PopulateMap();
-
-
-        
-
-        
-        
-
-        
-
-
     }
 
 

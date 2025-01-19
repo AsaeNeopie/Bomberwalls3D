@@ -3,20 +3,15 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
+public enum Tile {SolidBlock,BrickBlock,BombPickup,PlayerSpawn};
 public class LevelManager : MonoBehaviour
 {
+
     public List<Vector2Int> FreeSpaces { get; private set; } = new();
+    public Dictionary<Vector2Int,Tile?> Tiles = new();
 
     
-    public MapInfo Info = new MapInfo()
-    {
-        Start_Inclusive = new Vector2Int(-15, -1),
-        End_Exclusive = new Vector2Int(2, 10),
-        BombCount = 10,
-        BricksCount = 10,
-        SolidWallsPercentage = 80
-    };//custom inspector avec bouton "edit" qui ouvre une window comme pour les couleurs
-
+    public RectInt Bounds;//custom inspector avec bouton "edit" qui ouvre une window comme pour les couleurs
 
     //notifier
     public event Action OnMapUpdated;
@@ -41,12 +36,12 @@ public class LevelManager : MonoBehaviour
         FreeSpaces.Clear();
 
         //spawn solidWalls
-        for (int x = Info.Start_Inclusive.x; x < Info.End_Exclusive.x; x++)
+        for (int x = Bounds.min.x; x < Bounds.max.x; x++)
         {
-            for (int z = Info.Start_Inclusive.y; z < Info.End_Exclusive.y; z++)
+            for (int z = Bounds.min.y; z < Bounds.max.y; z++)
             {
 
-                if (x % 2 == 0 && z % 2 == 0 && UnityEngine.Random.value * 100 <= Info.SolidWallsPercentage)
+                if (x % 2 == 0 && z % 2 == 0 && UnityEngine.Random.value * 100 <= 80)
                 {
                     GameObject.Instantiate(_solidBlockPrefab, new Vector3(x, .5f, z), quaternion.Euler(90*Mathf.Deg2Rad,0,0),transform);
                 }
@@ -58,7 +53,7 @@ public class LevelManager : MonoBehaviour
         }
 
         //spawn brick walls
-        for (int i = 0; i < Info.BricksCount; i++)
+        for (int i = 0; i < 20; i++)
         {
             int RandomIndex = UnityEngine.Random.Range(0, FreeSpaces.Count);
             GameObject.Instantiate(_brickBlockPrefab, new Vector3(FreeSpaces[RandomIndex].x, .5f, FreeSpaces[RandomIndex].y), quaternion.identity,transform);
@@ -66,7 +61,7 @@ public class LevelManager : MonoBehaviour
         }
 
         //spawn bomb pick ups
-        for (int i = 0; i < Info.BombCount; i++)
+        for (int i = 0; i < 20; i++)
         {
             int RandomIndex = UnityEngine.Random.Range(0, FreeSpaces.Count);
             GameObject.Instantiate(_bombPickupPrefab, new Vector3(FreeSpaces[RandomIndex].x, .5f, FreeSpaces[RandomIndex].y), quaternion.identity,transform);

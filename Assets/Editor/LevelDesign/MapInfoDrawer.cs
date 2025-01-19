@@ -7,6 +7,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+/*
 [CustomPropertyDrawer(typeof(MapInfo))]
 public class MapInfoDrawer : PropertyDrawer
 {
@@ -73,3 +74,4 @@ public class MapInfoDrawer : PropertyDrawer
     }
 
 }
+*/
