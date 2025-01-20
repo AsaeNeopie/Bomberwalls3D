@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [Header("asset references")]
     [SerializeField] GameObject _playerPrefab;
     [SerializeField] GameObject _botPrefab;
+    [SerializeField] Animation _endAnim;
 
     [Header("Scene References")]
     [SerializeField] LevelManager _levelManager;
@@ -67,8 +68,12 @@ public class GameManager : MonoBehaviour
         if(AlivePlayers.Count == 1)
         {
             TimeManager.instance.StopTime(.5f);
+            _endAnim.Play();
         }
     }
 
-
+    public void SwitchScene()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
