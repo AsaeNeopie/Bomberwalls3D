@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Animation _endAnim;
 
     [Header("Scene References")]
-    [SerializeField] LevelManager _levelManager;
+    [SerializeField] public LevelManager LevelManager;
     
 
     [HideInInspector] public List<PlayerReference> AlivePlayers;
@@ -44,13 +44,13 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < menuPlayerManager.PlayerCount; i++)
         {
             print(i);
-            AlivePlayers.Add(GameObject.Instantiate(_playerPrefab, _levelManager.SpawnSockets[i].position, Quaternion.identity).GetComponent<PlayerReference>());
+            AlivePlayers.Add(GameObject.Instantiate(_playerPrefab, LevelManager.SpawnSockets[i].position, Quaternion.identity).GetComponent<PlayerReference>());
             AlivePlayers[i].OnDead += OnPlayerDied;
         }
 
         if (menuPlayerManager.BotCount>0) for (int i = 0; i < menuPlayerManager.BotCount; i++)
         {
-            GameObject.Instantiate(_botPrefab, _levelManager.SpawnSockets[i + menuPlayerManager.PlayerCount].position,Quaternion.identity);
+            GameObject.Instantiate(_botPrefab, LevelManager.SpawnSockets[i + menuPlayerManager.PlayerCount].position,Quaternion.identity);
             AlivePlayers[i].OnDead += OnPlayerDied;
         }
     }
