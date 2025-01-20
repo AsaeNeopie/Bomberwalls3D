@@ -1,13 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.UIElements;
 
 [CustomEditor(typeof(MapData))]
 public class MapDataEditor : Editor

@@ -1,15 +1,7 @@
-   using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-using UnityEngine.Rendering.Universal;
-using UnityEngine.Rendering;
 using System;
-using System.Threading.Tasks;
-using static PostProcessController;
-using Unity.VisualScripting;
-using System.ComponentModel;
-
+using UnityEngine.Rendering;
 
 public class PostProcessController : MonoBehaviour
 {

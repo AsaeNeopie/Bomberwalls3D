@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public enum Tile {SolidBlock,BrickBlock,BombPickup,PlayerSpawn,Air};
@@ -52,17 +51,17 @@ public class LevelManager : MonoBehaviour
                     switch (MapData.Tiles[new Vector2Int(x, z)])
                     {
                         case Tile.SolidBlock:
-                            GameObject.Instantiate(_solidBlockPrefab, new Vector3(x, 0, z), quaternion.Euler(-90f*Mathf.Deg2Rad,0,0),transform);
+                            GameObject.Instantiate(_solidBlockPrefab, new Vector3(x, 0, z), Quaternion.Euler(-90f,0,0),transform);
                             break;
                         case Tile.BrickBlock:
-                            GameObject.Instantiate(_brickBlockPrefab, new Vector3(x, .5f, z), quaternion.Euler(0, 0, -90f * Mathf.Deg2Rad), transform);
+                            GameObject.Instantiate(_brickBlockPrefab, new Vector3(x, .5f, z), Quaternion.Euler(0, 0, -90f), transform);
                             break;
                         case Tile.PlayerSpawn:
                             SpawnSockets.Add(new GameObject("Spawn Socket").transform);
                             SpawnSockets[SpawnSockets.Count-1].position = new Vector3(x, .5f, z);
                             break;
                         case Tile.BombPickup:
-                            GameObject.Instantiate(_bombPickupPrefab, new Vector3(x, .5f, z), quaternion.identity, transform);
+                            GameObject.Instantiate(_bombPickupPrefab, new Vector3(x, .5f, z), Quaternion.identity, transform);
                             break;
                         default:
                             break;
