@@ -32,6 +32,8 @@ public class PoolManager : MonoBehaviour
 
     [Header("Gameplay")]
     public Pool bombPool;
+    public Pool pickUpPool;
+
 
     [Header("VFXs")]
     public Pool VfxExplosionPool;

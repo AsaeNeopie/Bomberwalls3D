@@ -30,7 +30,9 @@ public class PlayerBombing : MonoBehaviour
         {
             BombCount--;
             OnBombDropped?.Invoke();
-            PoolManager.Instance.bombPool.PullObjectFromPool(transform.position.round()-Vector3.up * 0.5f);       
+            PoolManager.Instance.bombPool.PullObjectFromPool(transform.position.round()-Vector3.up * 0.5f);
+            Vector2Int v = GameManager.Instance.LevelManager.FreeSpaces[UnityEngine.Random.Range(0, GameManager.Instance.LevelManager.FreeSpaces.Count)];
+            PoolManager.Instance.pickUpPool.PullObjectFromPool(new Vector3(v.x,0,v.y));
         }
     }
 }
