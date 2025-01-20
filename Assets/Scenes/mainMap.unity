@@ -10418,6 +10418,7 @@ MonoBehaviour:
   _playerPrefab: {fileID: 21285612004424389, guid: da08b3dc671638a4ca6366e7bac14798,
     type: 3}
   _botPrefab: {fileID: 0}
+  _endAnim: {fileID: 0}
   _levelManager: {fileID: 148259461}
   AlivePlayers: []
 --- !u!4 &1195162571

@@ -2,8 +2,18 @@ using UnityEngine;
 
 public class LookAtCamamera : MonoBehaviour
 {
+    Transform parent;
+    Vector3 offset;
+    void Awake()
+    {
+        parent = transform.parent;
+        
+        transform.parent = null;
+        offset = parent.position - transform.position;
+    }
     void Update()
     {
-        transform.forward = (transform.position - Camera.main.transform.position).normalized;
+        transform.position = parent.position + offset;
+        transform.rotation = Camera.main.transform.rotation;
     }
 }
