@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -27,9 +28,13 @@ public class LevelManager_CustomInspector : Editor
         EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 1), Color.gray);
         GUILayout.Space(5);
 
-        
-
-        
+        if (GUILayout.Button("Edit Scriptable Object"))
+        {
+            MapEditorWindow window = EditorWindow.GetWindow<MapEditorWindow>();
+            window.Map = Target.MapData;
+            window.Show();
+        }
+            
 
         if (GUILayout.Button("Rebuild Map"))
             Target.PopulateMap();
