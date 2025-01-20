@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Assertions.Must;
 
 /// <summary>
 /// la machine à état du bot.

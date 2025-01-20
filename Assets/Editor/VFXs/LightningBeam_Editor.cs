@@ -1,8 +1,4 @@
-using SimpleVFXs;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 
 
 namespace SimpleVFXs
@@ -10,7 +6,7 @@ namespace SimpleVFXs
 
 #if UNITY_EDITOR
 
-[CustomEditor(typeof(LightningBeam), true)]
+    [CustomEditor(typeof(LightningBeam), true)]
 class LightningBeam_Editor : Editor
 {
     public override void OnInspectorGUI()

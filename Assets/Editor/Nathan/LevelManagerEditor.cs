@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-using static MapDataEditor;
 
 [CustomEditor(typeof(LevelManager))]
 public class LevelManager_CustomInspector : Editor
 {
     
+
+
     public override VisualElement CreateInspectorGUI()
     {
         return base.CreateInspectorGUI();
