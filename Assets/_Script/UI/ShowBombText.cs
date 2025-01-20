@@ -17,6 +17,6 @@ public class ShowBombText : MonoBehaviour
     public void updateText()
     {
         _bombInInvenotory++;
-        _bombText.text = _bombInInvenotory.ToString();
+        _bombText.text = "x" + _bombInInvenotory.ToString();
     }
 }

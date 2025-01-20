@@ -986,7 +986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 0}
   _botPrefab: {fileID: 0}
-  _spawnSockets: []
+  _levelManager: {fileID: 0}
   AlivePlayers: []
 --- !u!4 &1880072708
 Transform:

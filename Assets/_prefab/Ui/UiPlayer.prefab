@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 1447565638412581288}
   - component: {fileID: 6612487992363984464}
   - component: {fileID: 5231641985059917800}
+  - component: {fileID: 1414906294279919706}
   m_Layer: 0
   m_Name: UiPlayer
   m_TagString: Untagged
@@ -193,6 +194,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11df8e9b6bc2a094da02d874bea4b23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1414906294279919706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679984540591272250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5ade97e46e114448d9a7cf2e43aba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerBombing: {fileID: 0}
 --- !u!1 &2721325776082510795
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +218,7 @@ GameObject:
   - component: {fileID: 2280761075834674037}
   - component: {fileID: 5463916207044187421}
   - component: {fileID: 8354410849556945695}
+  - component: {fileID: 6285472489393672101}
   m_Layer: 0
   m_Name: bombText
   m_TagString: Untagged
@@ -328,6 +343,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6285472489393672101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2721325776082510795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5ade97e46e114448d9a7cf2e43aba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerBombing: {fileID: 0}
 --- !u!1 &5084551665857727722
 GameObject:
   m_ObjectHideFlags: 0
