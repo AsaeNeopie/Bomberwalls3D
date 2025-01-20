@@ -10,6 +10,7 @@ public class PlayerBombing : MonoBehaviour
     public int BombCount { get; private set; } = 0 ;
 
     public event Action OnBombPickedUp;
+    public event Action OnBombDropped;
 
     public void PickUpNewBomb()
     {
@@ -30,6 +31,7 @@ public class PlayerBombing : MonoBehaviour
         if (BombCount > 0) 
         {
             BombCount--;
+            OnBombDropped?.Invoke();
             PoolManager.Instance.bombPool.PullObjectFromPool(transform.position.round()-Vector3.up * 0.5f);       
         }
     }

@@ -519,6 +519,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5991053931713567740}
     m_Modifications:
+    - target: {fileID: 1018695013798173339, guid: 402db4f1881385c49a1af708ef651872,
+        type: 3}
+      propertyPath: _playerHealth
+      value: 
+      objectReference: {fileID: 5870930443209487648}
     - target: {fileID: 1414906294279919706, guid: 402db4f1881385c49a1af708ef651872,
         type: 3}
       propertyPath: _playerBombing
@@ -632,7 +637,7 @@ PrefabInstance:
     - target: {fileID: 5574168892672676606, guid: 402db4f1881385c49a1af708ef651872,
         type: 3}
       propertyPath: m_text
-      value: x0
+      value: x3
       objectReference: {fileID: 0}
     - target: {fileID: 6285472489393672101, guid: 402db4f1881385c49a1af708ef651872,
         type: 3}

@@ -10,13 +10,19 @@ public class ShowBombText : MonoBehaviour
     int _bombInInvenotory;
     public void Start()
     {
-        _playerBombing.OnBombPickedUp += updateText;
+        _playerBombing.OnBombPickedUp += updateMoreText;
+        _playerBombing.OnBombDropped += updateLessText;
         TryGetComponent(out _bombText);
     }
 
-    public void updateText()
+    public void updateMoreText()
     {
         _bombInInvenotory++;
+        _bombText.text = "x" + _bombInInvenotory.ToString();
+    }
+    public void updateLessText()
+    {
+        _bombInInvenotory--;
         _bombText.text = "x" + _bombInInvenotory.ToString();
     }
 }
