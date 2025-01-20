@@ -36,8 +36,8 @@ public class MapEditorWindow : EditorWindow
             new GUIContent("PlayerSpawn")
         }, 4);
 
-
         EditorGUILayout.Separator();
+        if (GUILayout.Button("generate solid tiles")) Map.GenerateTilingWalls();
         if(GUILayout.Button("Clear"))Map.Tiles.Clear();
     }
 
@@ -50,9 +50,10 @@ public class MapEditorWindow : EditorWindow
         {
             if (_canvas.Contains(Event.current.mousePosition))
             {
-               // Debug.Log(canvas.min);
-                Vector2Int c = ((Vector2)math.remap(_canvas.min, _canvas.max, (Vector2)Map.Bounds.min, (Vector2)Map.Bounds.max, Event.current.mousePosition)).ceil();
+                // Debug.Log(canvas.min);
+                Vector2Int c = ((Vector2)math.remap(_canvas.min, _canvas.max, (Vector2)Map.Bounds.min, (Vector2)Map.Bounds.max, Event.current.mousePosition)).floor();
                 Map.Tiles[new Vector2Int(c.x, c.y)] = _tileTypes[_selectedTile];
+                EditorUtility.SetDirty(Map);
                 Event.current.Use();
             }
         }
@@ -100,7 +101,7 @@ public class MapEditorWindow : EditorWindow
                 for (int j = 0; j < Map.Bounds.height; j++)
                 {
 
-                    Vector2Int key = new Vector2Int(i, j);
+                    Vector2Int key = new Vector2Int(i+Mathf.FloorToInt(Map.Bounds.xMin), j+ Mathf.FloorToInt(Map.Bounds.yMin));
                     if (Map.Tiles.ContainsKey(key))
                     {
                         Color c = Color.white;
@@ -136,7 +137,7 @@ public class MapEditorWindow : EditorWindow
 
     private void OnDisable()
     {
-
+        AssetDatabase.SaveAssetIfDirty(Map);
     }
 
 

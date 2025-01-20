@@ -21,52 +21,62 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject _brickBlockPrefab;
     [SerializeField] GameObject _solidBlockPrefab;
 
+
+    [HideInInspector] public List<Transform> SpawnSockets;
+
+    public MapData MapData;
+
     //bouton open map edition window
 
     private void Start()
     {
-        PopulateMap();
+       // PopulateMap();
     }
 
     public void PopulateMap()
     {
         //clear map
-        for (int i = 0; i < transform.childCount; i++) DestroyImmediate(transform.GetChild(0).gameObject);
+        while(transform.childCount>0) DestroyImmediate(transform.GetChild(0).gameObject);
 
         FreeSpaces.Clear();
 
         //spawn solidWalls
-        for (int x = Bounds.min.x; x < Bounds.max.x; x++)
+        for (int x = Bounds.min.x; x <= Bounds.max.x; x++)
         {
-            for (int z = Bounds.min.y; z < Bounds.max.y; z++)
+            for (int z = Bounds.min.y; z <= Bounds.max.y; z++)
             {
-
-                if (x % 2 == 0 && z % 2 == 0 && UnityEngine.Random.value * 100 <= 80)
+                Debug.DrawRay(new Vector3(x, .5f, z), Vector3.up, Color.red,1);
+                if(MapData.Tiles.ContainsKey(new Vector2Int(x, z)))
                 {
-                    GameObject.Instantiate(_solidBlockPrefab, new Vector3(x, .5f, z), quaternion.Euler(90*Mathf.Deg2Rad,0,0),transform);
+                    Debug.Log(new Vector2Int(x, z));
+                    switch (MapData.Tiles[new Vector2Int(x, z)])
+                    {
+                        case Tile.SolidBlock:
+                            GameObject.Instantiate(_solidBlockPrefab, new Vector3(x, 0, z), quaternion.Euler(-90f*Mathf.Deg2Rad,0,0),transform);
+                            break;
+                        case Tile.BrickBlock:
+                            GameObject.Instantiate(_brickBlockPrefab, new Vector3(x, .5f, z), quaternion.Euler(0, 0, -90f * Mathf.Deg2Rad), transform);
+                            break;
+                        case Tile.PlayerSpawn:
+                            SpawnSockets.Add(new GameObject("Spawn Socket").transform);
+                            SpawnSockets[SpawnSockets.Count-1].position = new Vector3(x, .5f, z);
+                            break;
+                        case Tile.BombPickup:
+                            GameObject.Instantiate(_bombPickupPrefab, new Vector3(x, .5f, z), quaternion.identity, transform);
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
                     FreeSpaces.Add(new Vector2Int(x, z));
                 }
+                
             }
         }
 
-        //spawn brick walls
-        for (int i = 0; i < 20; i++)
-        {
-            int RandomIndex = UnityEngine.Random.Range(0, FreeSpaces.Count);
-            GameObject.Instantiate(_brickBlockPrefab, new Vector3(FreeSpaces[RandomIndex].x, .5f, FreeSpaces[RandomIndex].y), quaternion.identity,transform);
-            FreeSpaces.RemoveAt(RandomIndex);
-        }
-
-        //spawn bomb pick ups
-        for (int i = 0; i < 20; i++)
-        {
-            int RandomIndex = UnityEngine.Random.Range(0, FreeSpaces.Count);
-            GameObject.Instantiate(_bombPickupPrefab, new Vector3(FreeSpaces[RandomIndex].x, .5f, FreeSpaces[RandomIndex].y), quaternion.identity,transform);
-            FreeSpaces.RemoveAt(RandomIndex);
-        }
+       
 
     }
 
