@@ -15,8 +15,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         _health = _MaxHealth;
         TryGetComponent(out _mvt);
-
-        Time.timeScale = 2; //c'est Nestor au cas ou
     }
 
     public void OnDamageTaken(Vector3 Source)
