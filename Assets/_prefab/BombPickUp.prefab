@@ -48,7 +48,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179305686592873544}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -269,32 +269,32 @@ PrefabInstance:
     - target: {fileID: 5580113003923932944, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
-      value: 1.6981133
+      value: 1.7024746
       objectReference: {fileID: 0}
     - target: {fileID: 5580113003923932944, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
-      value: 0.8206037
+      value: 0.2537649
       objectReference: {fileID: 0}
     - target: {fileID: 5580113003923932944, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
-      value: 0
+      value: 1.02725
       objectReference: {fileID: 0}
     - target: {fileID: 6056204946957599363, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.45882356
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6056204946957599363, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.6864252
+      value: 0.45882356
       objectReference: {fileID: 0}
     - target: {fileID: 6056204946957599363, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.993368
       objectReference: {fileID: 0}
     - target: {fileID: 9200151234017716958, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}

@@ -13,6 +13,7 @@ public class LookAtCamamera : MonoBehaviour
     }
     void Update()
     {
+        if(parent == null) { Destroy(gameObject); return; }
         transform.position = parent.position + offset;
         transform.rotation = Camera.main.transform.rotation;
     }

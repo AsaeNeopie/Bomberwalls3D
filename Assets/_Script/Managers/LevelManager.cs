@@ -6,7 +6,7 @@ public enum Tile {SolidBlock,BrickBlock,BombPickup,PlayerSpawn,Air};
 public class LevelManager : MonoBehaviour
 {
 
-    public List<Vector2Int> FreeSpaces { get; private set; } = new();
+    [field:SerializeField]public List<Vector2Int> FreeSpaces { get; private set; } = new();
     public Dictionary<Vector2Int,Tile?> Tiles = new();
 
     
@@ -20,8 +20,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject _brickBlockPrefab;
     [SerializeField] GameObject _solidBlockPrefab;
 
-
-    [HideInInspector] public List<Transform> SpawnSockets;
+    public List<Transform> SpawnSockets;
 
     public MapData MapData;
 
@@ -38,6 +37,7 @@ public class LevelManager : MonoBehaviour
         while(transform.childCount>0) DestroyImmediate(transform.GetChild(0).gameObject);
 
         FreeSpaces.Clear();
+        SpawnSockets.Clear();
 
         //spawn solidWalls
         for (int x = Bounds.min.x; x <= Bounds.max.x; x++)
@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
                     switch (MapData.Tiles[new Vector2Int(x, z)])
                     {
                         case Tile.SolidBlock:
-                            GameObject.Instantiate(_solidBlockPrefab, new Vector3(x, 0, z), Quaternion.Euler(-90f,0,0),transform);
+                            GameObject.Instantiate(_solidBlockPrefab, new Vector3(x, -.5f, z), Quaternion.Euler(-90f,0,0),transform);
                             break;
                         case Tile.BrickBlock:
                             GameObject.Instantiate(_brickBlockPrefab, new Vector3(x, .5f, z), Quaternion.Euler(0, 0, -90f), transform);
@@ -59,6 +59,7 @@ public class LevelManager : MonoBehaviour
                         case Tile.PlayerSpawn:
                             SpawnSockets.Add(new GameObject("Spawn Socket").transform);
                             SpawnSockets[SpawnSockets.Count-1].position = new Vector3(x, .5f, z);
+                            SpawnSockets[SpawnSockets.Count - 1].transform.parent = transform;
                             break;
                         case Tile.BombPickup:
                             GameObject.Instantiate(_bombPickupPrefab, new Vector3(x, .5f, z), Quaternion.identity, transform);

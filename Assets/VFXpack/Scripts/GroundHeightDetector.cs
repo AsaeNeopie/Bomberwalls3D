@@ -18,10 +18,12 @@ namespace SimpleVFXs
         {
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, float.PositiveInfinity, GroundLayerMask.value))
             {
+                if(VFX.HasFloat(groundHeightPropertieName))
                 VFX.SetFloat(groundHeightPropertieName, hit.point.y);
             }
             else
             {
+                if (VFX.HasFloat(groundHeightPropertieName))
                 VFX.SetFloat(groundHeightPropertieName, float.NegativeInfinity);
             }
         }
