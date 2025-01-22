@@ -12,7 +12,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float _acceleration = 50;
 
     Vector2 _moveInputVector;
+
+    bool canMove = false;
+
     public Vector3 Velocity { get; private set; }
+
+
+    private void Start()
+    {
+        GameManager.Instance.OnGameStart += () => canMove = true;
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -30,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+        if (!canMove) return;
+
         Vector3 targetVelocity = new Vector3(_moveInputVector.x, 0f, _moveInputVector.y) * _movementSpeed;
 
         Velocity=Vector3.MoveTowards(Velocity, targetVelocity, _acceleration*Time.deltaTime);

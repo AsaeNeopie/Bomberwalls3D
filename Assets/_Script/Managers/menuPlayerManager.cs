@@ -7,6 +7,12 @@ public class menuPlayerManager : MonoBehaviour
     public static int PlayerCount, BotCount;
     [SerializeField] TMP_Text _playerCountText, _botCountText;
 
+    private void Start()
+    {
+        _botCountText.text = "Number of bots : " + BotCount.ToString();
+        _playerCountText.text = "Number of players : " + PlayerCount.ToString();
+    }
+
     public void AddBot(int offset)
     {
         BotCount += offset;

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -32,10 +33,15 @@ public class PooledObject : MonoBehaviour
     {
         if(!IsInPool) Pool.PutObjectBackInPool(this);
     }
-    public async void GoBackIntoPool_Delayed(float delay)
+    public void GoBackIntoPool_Delayed(float delay)
     {
-        await Task.Delay(Mathf.RoundToInt(delay * 1000));
-        if(Application.isPlaying)
+        StartCoroutine(C_GoBackIntoPool_Delayed(delay));
+    }
+
+    IEnumerator C_GoBackIntoPool_Delayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (Application.isPlaying)
         if (!IsInPool) Pool.PutObjectBackInPool(this);
     }
 

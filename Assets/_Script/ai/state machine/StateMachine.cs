@@ -29,7 +29,7 @@ public class StateMachine : MonoBehaviour
     private IEnumerator Start()
     {
         yield return 0 ;
-        transitionTo(S_CollectingBombs);
+        GameManager.Instance.OnGameStart+= () => transitionTo(S_CollectingBombs);
     }
 
     /// <summary>
@@ -50,11 +50,6 @@ public class StateMachine : MonoBehaviour
         {
             if(!currentState.ChangeStateIfBetterStateFound()) 
             currentState.Update();
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Debug.Log(currentState.GetType().ToString());
         }
     }
 

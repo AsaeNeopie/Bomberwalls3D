@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -9,14 +10,12 @@ public class GameManager : MonoBehaviour
     [Header("asset references")]
     [SerializeField] GameObject _playerPrefab;
     [SerializeField] GameObject _botPrefab;
-    [SerializeField] Animation _endAnim;
-
-
     
 
     [HideInInspector] public List<CharacterReference> AlivePlayers;
-    
 
+    public event Action OnGameOver;
+    public event Action OnGameStart;
 
     //singleton
     private static GameManager instance;
@@ -38,6 +37,11 @@ public class GameManager : MonoBehaviour
         SpawnPlayers();
     }
 
+    public void StartGame()
+    {
+        OnGameStart?.Invoke();
+    }
+
     void SpawnPlayers()
     {
         for (int i = 0; i < menuPlayerManager.PlayerCount; i++)
@@ -49,7 +53,7 @@ public class GameManager : MonoBehaviour
 
         if (menuPlayerManager.BotCount>0) for (int i = 0; i < menuPlayerManager.BotCount; i++)
         {
-            GameObject.Instantiate(_botPrefab, LevelManager.Instance.SpawnSockets[i + menuPlayerManager.PlayerCount].position,Quaternion.identity);
+            AlivePlayers.Add(GameObject.Instantiate(_botPrefab, LevelManager.Instance.SpawnSockets[i + menuPlayerManager.PlayerCount].position,Quaternion.identity).GetComponent<CharacterReference>());
             AlivePlayers[i].OnDead += OnPlayerDied;
         }
     }
@@ -57,10 +61,10 @@ public class GameManager : MonoBehaviour
     void OnPlayerDied(CharacterReference player)
     {
         AlivePlayers.Remove(player);
-        if(AlivePlayers.Count == 1)
+        if(AlivePlayers.Count <= 1)
         {
-            TimeManager.instance.StopTime(.5f);
-            _endAnim.Play();
+            OnGameOver?.Invoke();
+            Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
         }
     }
 

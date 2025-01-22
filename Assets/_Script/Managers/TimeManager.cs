@@ -19,6 +19,11 @@ public class TimeManager : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        GameManager.Instance.OnGameOver += () => StopTime(3f);
+    }
+
     IEnumerator DilateTime(float duration)
     {
         animStartValue = Time.timeScale;
@@ -47,7 +52,7 @@ public class TimeManager : MonoBehaviour
         while (Time.realtimeSinceStartup < endTime)
         {
             //calculer l'alpha
-            float alpha = 1 - (endTime - Time.realtimeSinceStartup) / transitionDuration;
+            float alpha = 1f - (endTime - Time.realtimeSinceStartup) / transitionDuration;
 
             //lerp
             Time.timeScale = Mathf.Lerp(animStartValue, 0, alpha);
@@ -56,13 +61,13 @@ public class TimeManager : MonoBehaviour
             yield return null;
         }
 
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
 
     public void StopTime(float t)
     {
         if (DilatationCoroutine != null) StopCoroutine(DilatationCoroutine);
-        StartCoroutine(C_StopTime(t*t));
+        StartCoroutine(C_StopTime(t));
     }
 
 

@@ -52,4 +52,21 @@ public static class VectorExtensions
     {
         return new Vector3Int(v.x, 0, v.y);
     }
+
+    //additional math
+    public static Vector2 AbsoluteValue(this Vector2 v)
+    {
+        return new Vector2(Mathf.Abs(v.x),Mathf.Abs(v.y));
+    }
+
+    //comparaison
+    public static Vector2 Max(Vector2 a,Vector2 b)
+    {
+        return new Vector2(Mathf.Max(a.x,b.x),Mathf.Max(a.y,b.y));
+    }
+
+    public static Vector2 Min(Vector2 a, Vector2 b)
+    {
+        return new Vector2(Mathf.Min(a.x, b.x), Mathf.Min(a.y, b.y));
+    }
 }

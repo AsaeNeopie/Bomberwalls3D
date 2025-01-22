@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class SetText : MonoBehaviour
+public class BeginningTimer : MonoBehaviour
 {
     TMP_Text _timerText;
 
@@ -12,5 +12,10 @@ public class SetText : MonoBehaviour
     public void setNewText(string text)
     {
         _timerText.text = text;
+    }
+
+    public void TriggerGameStart()
+    {
+        GameManager.Instance.StartGame();
     }
 }
