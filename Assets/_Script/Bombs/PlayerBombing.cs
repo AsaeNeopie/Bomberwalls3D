@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerBombing : MonoBehaviour
 {
     GameObject _bomb;
-    public int BombCount { get; private set; } = 0 ;
+    public byte BombCount { get; private set; } = 0 ;
 
     public event Action OnBombPickedUp;
     public event Action OnBombDropped;
@@ -31,7 +31,7 @@ public class PlayerBombing : MonoBehaviour
             BombCount--;
             OnBombDropped?.Invoke();
             PoolManager.Instance.bombPool.PullObjectFromPool(transform.position.round()-Vector3.up * 0.5f);
-            Vector2Int v = GameManager.Instance.LevelManager.FreeSpaces[UnityEngine.Random.Range(0, GameManager.Instance.LevelManager.FreeSpaces.Count)];
+            Vector2Int v = LevelManager.Instance.FreeSpaces[UnityEngine.Random.Range(0, LevelManager.Instance.FreeSpaces.Count)];
             PoolManager.Instance.pickUpPool.PullObjectFromPool(new Vector3(v.x,0,v.y));
         }
     }

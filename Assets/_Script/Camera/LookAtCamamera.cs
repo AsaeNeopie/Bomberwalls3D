@@ -9,7 +9,7 @@ public class LookAtCamamera : MonoBehaviour
         parent = transform.parent;
         
         transform.parent = null;
-        offset = parent.position - transform.position;
+        offset = transform.position-parent.position ;
     }
     void Update()
     {

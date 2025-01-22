@@ -1,9 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class State_Win : StateBase
 {
     public State_Win(StateMachine sm) : base(sm) { }
-
 
     public override void OnEntered()
     {
@@ -12,9 +12,8 @@ public class State_Win : StateBase
 
     public override void OnExited()
     {
-    }
 
-    
+    }
 
     public override void Update()
     {

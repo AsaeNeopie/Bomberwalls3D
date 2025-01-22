@@ -113,17 +113,19 @@ public class Pool : MonoBehaviour
     /// <param name="ObjectToPool"></param>
     public void PutObjectBackInPool(PooledObject ObjectToPool)
     {
-        ObjectToPool.transform.parent = transform;
-        ObjectToPool.gameObject.SetActive(false);
-        ObjectToPool.IsInPool = true;
-
-
         if (!_freeIndices.Contains(ObjectToPool.Index))
         {
             _freeIndices.Add(ObjectToPool.Index);
             ObjectToPool.gameObject.SendMessage("OnPutBackIntoPool", SendMessageOptions.DontRequireReceiver);
 
         }
+
+        ObjectToPool.transform.parent = transform;
+        ObjectToPool.gameObject.SetActive(false);
+        ObjectToPool.IsInPool = true;
+
+
+
     }
 
 

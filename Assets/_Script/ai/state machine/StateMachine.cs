@@ -41,11 +41,21 @@ public class StateMachine : MonoBehaviour
         if(currentState!=null) currentState.OnExited();
         currentState = to;
         currentState.OnEntered();
+        //print(currentState.GetType().ToString());
     }
 
     private void Update()
     {
-        if(currentState!=null) currentState.Update();
+        if (currentState != null)
+        {
+            if(!currentState.ChangeStateIfBetterStateFound()) 
+            currentState.Update();
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log(currentState.GetType().ToString());
+        }
     }
 
     /// <summary>

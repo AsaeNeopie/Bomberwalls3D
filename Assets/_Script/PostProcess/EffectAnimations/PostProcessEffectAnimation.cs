@@ -21,15 +21,12 @@ public abstract class PostProcessEffectAnimation<ComponentType> where ComponentT
 
     public void SetUp(VolumeProfile mVolumeProfile)
     {
-        //print("--- Set Up ---");
         for (int i = 0; i < mVolumeProfile.components.Count; i++)
         {
-            //print(mVolumeProfile.components[i]);
 
             if (mVolumeProfile.components[i].GetType() == typeof(ComponentType))
             {
                 _component = (ComponentType)mVolumeProfile.components[i];
-                //Debug.Log(_component.name);
             }
         }
 
@@ -39,7 +36,6 @@ public abstract class PostProcessEffectAnimation<ComponentType> where ComponentT
         }
 
         OnSetUp();
-        //print("--- Set Up End ---");
 
     }
 
@@ -71,7 +67,6 @@ public abstract class PostProcessEffectAnimation<ComponentType> where ComponentT
     {
         if (PostProcessController.instance.effectsCoroutines[this.GetType()] != null)
         {
-            //Debug.Log("STOOOOOOOOOOOOOOOOP");
             PostProcessController.instance.StopCoroutine(PostProcessController.instance.effectsCoroutines[this.GetType()]);
         }
         PostProcessController.instance.effectsCoroutines[this.GetType()] = null;

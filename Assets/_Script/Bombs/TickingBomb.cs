@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TickingBomb : MonoBehaviour
@@ -8,6 +9,8 @@ public class TickingBomb : MonoBehaviour
     [SerializeField] LayerMask _layerMask;
     PooledObject _asPooledObject;
 
+    public static List<TickingBomb> Instances = new();
+
     void OnInstantiatedByPool()
     {
         TryGetComponent<PooledObject>(out _asPooledObject);
@@ -15,7 +18,23 @@ public class TickingBomb : MonoBehaviour
 
     public void OnPulledFromPool()
     {
+        Instances.Add(this);
+        if (LevelManager.Instance.FreeSpaces.Contains(transform.position.XZ().round()))
+        {
+            LevelManager.Instance.FreeSpaces.Remove(transform.position.XZ().round());
+        }
+
         StartCoroutine(StartTicking());
+    }
+
+    public void OnPutBackIntoPool()
+    {
+        Instances.Remove(this);
+
+        if (!LevelManager.Instance.FreeSpaces.Contains(transform.position.XZ().round()))
+        {
+            LevelManager.Instance.FreeSpaces.Add(transform.position.XZ().round());
+        }
     }
 
     /// <summary>

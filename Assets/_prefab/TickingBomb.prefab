@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7504600291776723250}
   - component: {fileID: 2746972165262718222}
   - component: {fileID: 1418380872417615821}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,8 @@ GameObject:
   - component: {fileID: 8448516242996486481}
   - component: {fileID: 8420768869947255162}
   - component: {fileID: 3444525602820012106}
-  m_Layer: 2
+  - component: {fileID: 1220317384046720301}
+  m_Layer: 7
   m_Name: TickingBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,6 +277,22 @@ MonoBehaviour:
   _frequencyIncreaseRate: 1.5
   _baseFrequency: 0.5
   _redIntensity: 100
+--- !u!208 &1220317384046720301
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900711239348290319}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.1
 --- !u!1001 &1357325812525463176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -342,7 +359,7 @@ PrefabInstance:
     - target: {fileID: 2436660179564029381, guid: 5689ff2ac2651c54baf51829bb3a87ab,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4242467957679125109, guid: 5689ff2ac2651c54baf51829bb3a87ab,
         type: 3}
@@ -382,7 +399,7 @@ PrefabInstance:
     - target: {fileID: 7272076906795034139, guid: 5689ff2ac2651c54baf51829bb3a87ab,
         type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

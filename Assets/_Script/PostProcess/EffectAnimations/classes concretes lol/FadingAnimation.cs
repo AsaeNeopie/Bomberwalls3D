@@ -25,7 +25,6 @@ public class FadingEffect : PostProcessEffectAnimation<ColorAdjustments>
 
     protected override void OnBeforePlay()
     {
-        Debug.Log("puuu");
         AnimStartValue = _component.colorFilter.value;
     }
 

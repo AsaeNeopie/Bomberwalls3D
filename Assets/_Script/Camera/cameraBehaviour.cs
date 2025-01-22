@@ -21,7 +21,7 @@ public class cameraBehaviour : MonoBehaviour
         if (GameManager.Instance.AlivePlayers.Count == 0) return;
 
         Vector3 Panning = Vector3.zero;
-        foreach(PlayerReference player in GameManager.Instance.AlivePlayers)
+        foreach(CharacterReference player in GameManager.Instance.AlivePlayers)
         {
             Panning+= player.transform.position-_basePosition;
         }

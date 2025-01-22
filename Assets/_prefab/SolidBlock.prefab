@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2554155550161075077}
   - component: {fileID: 1197272249173451155}
   - component: {fileID: 6151079402223956573}
+  - component: {fileID: 8883069455453885327}
   m_Layer: 3
   m_Name: SolidBlock
   m_TagString: Untagged
@@ -141,3 +142,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629a9dfba38a2654a80f19d2648dd60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8883069455453885327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563205534497352766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff

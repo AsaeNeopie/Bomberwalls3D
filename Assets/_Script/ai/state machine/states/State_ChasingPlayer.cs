@@ -10,25 +10,28 @@ public class State_ChasingPlayer : StateBase
 
     void updateTarget()
     {
-        machine.Controller.TargetToFollow = machine.Sensor.NearestPlayer;
+        Controller.StartFollowingTarget(Sensor.NearestPlayer.transform);
     }
 
     public override void OnEntered()
     {
-        machine.Sensor.OnNearestPlayerChanged+=updateTarget;
+        updateTarget();
+        Sensor.OnNearestPlayerChanged+=updateTarget;
     }
 
     public override void OnExited()
     {
-        machine.Sensor.OnNearestPlayerChanged -= updateTarget;
+        Sensor.OnNearestPlayerChanged -= updateTarget;
+        Controller.StopFollowingTarget();
     }
 
     public override void Update()
     {
-        if ((machine.Controller.TargetToFollow.position-transform.position).sqrMagnitude< machine.Sensor.TickingBombDangerRadius* machine.Sensor.TickingBombDangerRadius *0.5f 
+        if (Controller.TargetToFollow == null) { updateTarget(); return; }
+        if ((Controller.TargetToFollow.position-transform.position).sqrMagnitude< machine.Sensor.TickingBombDangerRadius* machine.Sensor.TickingBombDangerRadius *0.5f 
             && Time.time- lastBombDropTime> MinimumDelayBetweenBombDrops)
         {
-            machine.Controller.TryToDropBomb();
+            Controller.TryToDropBomb();
         }
     }
 
