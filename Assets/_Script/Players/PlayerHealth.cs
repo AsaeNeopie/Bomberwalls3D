@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         //feedbacks
         PostProcessController.instance.ChromaticAberrationFlash.play();
+        PostProcessController.instance.PlayImpactFrameAnimation();
         TimeManager.instance.PlayTimeDilatationAnimation();
         if (PoolManager.Instance.VfxHitPool!=null) PoolManager.Instance.VfxHitPool.PullObjectFromPool(transform.position);
         

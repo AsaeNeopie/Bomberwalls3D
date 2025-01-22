@@ -3,7 +3,7 @@ using UnityEngine;
 public class LookAtCamamera : MonoBehaviour
 {
     Transform parent;
-    Vector3 offset;
+    public Vector3 offset;
     void Awake()
     {
         parent = transform.parent;

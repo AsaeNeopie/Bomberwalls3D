@@ -269,32 +269,32 @@ PrefabInstance:
     - target: {fileID: 5580113003923932944, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
-      value: 1.7024746
+      value: 0.79338366
       objectReference: {fileID: 0}
     - target: {fileID: 5580113003923932944, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
-      value: 0.2537649
+      value: 0.48612562
       objectReference: {fileID: 0}
     - target: {fileID: 5580113003923932944, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
-      value: 1.02725
+      value: 0.19086115
       objectReference: {fileID: 0}
     - target: {fileID: 6056204946957599363, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.376602
       objectReference: {fileID: 0}
     - target: {fileID: 6056204946957599363, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.45882356
+      value: 0.5295784
       objectReference: {fileID: 0}
     - target: {fileID: 6056204946957599363, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.993368
+      value: 0.8773585
       objectReference: {fileID: 0}
     - target: {fileID: 9200151234017716958, guid: 840aa7f9bbe8a5c4a8426754ea93c799,
         type: 3}

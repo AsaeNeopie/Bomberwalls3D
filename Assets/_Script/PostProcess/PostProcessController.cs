@@ -7,6 +7,7 @@ public class PostProcessController : MonoBehaviour
 {
     [Header("references")]
     [SerializeField] VolumeProfile mVolumeProfile;
+    [SerializeField] Animator _ImpactFrameVolumeAnimator;
 
     [Header("Effects")]
     public ExposureAnimation E_ExposureFlash = new();
@@ -20,6 +21,11 @@ public class PostProcessController : MonoBehaviour
 
     //animation management
     public Dictionary<Type, Coroutine> effectsCoroutines = new();
+
+    public void PlayImpactFrameAnimation()
+    {
+        _ImpactFrameVolumeAnimator.SetTrigger("Play");
+    }
 
     private void Awake()
     {
