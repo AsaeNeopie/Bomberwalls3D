@@ -52,7 +52,6 @@ public class AISensor : MonoBehaviour
 
 
 
-
     private void Update()
     {
         CheckForNearestPlayer();

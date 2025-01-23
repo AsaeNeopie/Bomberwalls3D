@@ -18,7 +18,7 @@ public class cameraBehaviour : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (GameManager.Instance.AlivePlayers.Count == 0) return;
+        if (GameManager.Instance==null || GameManager.Instance.AlivePlayers.Count == 0) return;
 
         Vector3 Panning = Vector3.zero;
         foreach(CharacterReference player in GameManager.Instance.AlivePlayers)

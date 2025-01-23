@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
-    int _health;
-    [Min(1)][SerializeField] int _MaxHealth;
+    public int HP { get; private set; }
+    [Min(1)][SerializeField] int _MaxHealth = 5;
 
     public event Action<int> OnHealthChanged;
     public event Action OnGameOver;
@@ -13,28 +13,28 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        _health = _MaxHealth;
+        HP = _MaxHealth;
         TryGetComponent(out _mvt);
     }
 
     public void OnDamageTaken(Vector3 Source)
     {
         //feedbacks
-        PostProcessController.instance.ChromaticAberrationFlash.play();
-        PostProcessController.instance.PlayImpactFrameAnimation();
-        TimeManager.instance.PlayTimeDilatationAnimation();
+        if(PostProcessController.instance!=null) PostProcessController.instance.ChromaticAberrationFlash.play();
+        if (PostProcessController.instance != null) PostProcessController.instance.PlayImpactFrameAnimation();
+        if (TimeManager.instance != null) TimeManager.instance.PlayTimeDilatationAnimation();
         if (PoolManager.Instance.VfxHitPool!=null) PoolManager.Instance.VfxHitPool.PullObjectFromPool(transform.position);
         
         Source.y = transform.position.y;
-        _mvt.AddForce((transform.position-Source).normalized * 14);
+        if(_mvt!=null)_mvt.AddForce((transform.position-Source).normalized * 14);
 
-        _health--;
+        HP--;
 
         //notifier
-        OnHealthChanged?.Invoke(_health);
+        OnHealthChanged?.Invoke(HP);
         
         //Gameover
-        if (_health==0 ) GameOver();
+        if (HP==0 ) GameOver();
     }
 
     void GameOver()

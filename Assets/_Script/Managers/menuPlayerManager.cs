@@ -11,6 +11,7 @@ public class menuPlayerManager : MonoBehaviour
     {
         _botCountText.text = "Number of bots : " + BotCount.ToString();
         _playerCountText.text = "Number of players : " + PlayerCount.ToString();
+        Time.timeScale = 1f;
     }
 
     public void AddBot(int offset)

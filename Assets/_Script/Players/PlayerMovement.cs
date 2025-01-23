@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float MoveSpeed => _movementSpeed;
     [SerializeField] float _acceleration = 50;
 
+    float _baseY;
+
     Vector2 _moveInputVector;
 
     bool canMove = false;
@@ -21,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnGameStart += () => canMove = true;
+        _baseY = transform.position.y;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -46,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         Velocity=Vector3.MoveTowards(Velocity, targetVelocity, _acceleration*Time.deltaTime);
 
         _characterController.Move(Velocity*Time.deltaTime);
+        _characterController.Move(transform.position.y * Vector3.down);
     }
     
     private void FixedUpdate()

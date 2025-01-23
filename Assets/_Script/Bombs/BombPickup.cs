@@ -17,7 +17,7 @@ public class BombPickup : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if(_asPooledObject == null) Instances.Remove(this);
+        Instances.Remove(this);
     }
 
     public void OnPulledFromPool()

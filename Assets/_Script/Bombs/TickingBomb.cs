@@ -7,6 +7,7 @@ public class TickingBomb : MonoBehaviour
     [SerializeField] float _timeToExplode;
     [SerializeField] float _radius;
     [SerializeField] LayerMask _layerMask;
+    [SerializeField] Collider _collider;
     PooledObject _asPooledObject;
 
     public static List<TickingBomb> Instances = new();
@@ -14,10 +15,14 @@ public class TickingBomb : MonoBehaviour
     void OnInstantiatedByPool()
     {
         TryGetComponent<PooledObject>(out _asPooledObject);
+        TryGetComponent(out _collider);
+
     }
 
     public void OnPulledFromPool()
     {
+        _collider.isTrigger = true;
+
         Instances.Add(this);
         if (LevelManager.Instance.FreeSpaces.Contains(transform.position.XZ().round()))
         {
@@ -35,6 +40,11 @@ public class TickingBomb : MonoBehaviour
         {
             LevelManager.Instance.FreeSpaces.Add(transform.position.XZ().round());
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (Instances.Contains(this))Instances.Remove(this);
     }
 
     /// <summary>
@@ -74,5 +84,12 @@ public class TickingBomb : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _radius);
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _collider.isTrigger = false;
+        }
+    }
 
 }
